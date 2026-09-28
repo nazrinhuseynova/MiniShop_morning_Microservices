@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.EntityFrameworkCore;
 using ProductService.API.Data;
 using ProductService.API.Models;
@@ -17,6 +18,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
+    [OutputCache(PolicyName = "ProductsCache")]
     public async Task<IActionResult> GetAll()
     {
         var products = await _context.Products
