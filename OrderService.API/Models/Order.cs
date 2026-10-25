@@ -1,4 +1,4 @@
-﻿namespace OrderService.API.Models;
+namespace OrderService.API.Models;
 
 public class Order
 {
@@ -9,6 +9,8 @@ public class Order
     public string ProductName { get; set; } = string.Empty;
 
     public int Quantity { get; set; }
+
+    public string CustomerEmail { get; set; } = string.Empty;
 
     public decimal UnitPrice { get; set; }
 
