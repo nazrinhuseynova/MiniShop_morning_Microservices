@@ -62,6 +62,21 @@ function App() {
       return;
     }
 
+    const email = window.prompt(
+      `Enter your email address:`,
+      "user@example.com"
+    );
+
+    if (!email || !email.trim()) {
+
+      setMessage(
+        "Please enter a valid email address."
+      );
+
+      return;
+
+    }
+
     try {
 
       setLoading(true);
@@ -70,11 +85,12 @@ function App() {
 
       const order = await createOrder(
         product.id,
-        quantity
+        quantity,
+        email.trim()
       );
 
       setMessage(
-        `Order #${order.id} created successfully. Total: ${order.totalPrice} AZN`
+        `Order #${order.id} created successfully. Total: ${order.totalPrice} AZN. Notification sent to ${email}.`
       );
 
       await loadProducts();
@@ -85,7 +101,7 @@ function App() {
         `Error: ${error.message}`
       );
 
-    } finally {
+    } Finally {
 
       setLoading(false);
 
@@ -93,7 +109,7 @@ function App() {
 
   };
 
-  return (
+  Return (
     <div className="app">
 
       <header>
@@ -134,4 +150,4 @@ function App() {
   );
 }
 
-export default App;
+Export default App;
