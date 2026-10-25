@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using NotificationService.API.Models;
 
 namespace NotificationService.API.Controllers;
@@ -13,6 +13,7 @@ public class NotificationsController : ControllerBase
         Console.WriteLine("----------------------------------");
         Console.WriteLine("NEW NOTIFICATION");
         Console.WriteLine($"Order Id: {request.OrderId}");
+        Console.WriteLine($"Email: {request.Email}");
         Console.WriteLine($"Product: {request.ProductName}");
         Console.WriteLine($"Quantity: {request.Quantity}");
         Console.WriteLine($"Total: {request.TotalPrice} AZN");
@@ -20,7 +21,7 @@ public class NotificationsController : ControllerBase
 
         return Ok(new
         {
-            message = "Notification sent successfully."
+            message = $"Notification sent successfully to {request.Email}."
         });
     }
 }
